@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Result</title>
+</head>
+<body>
+    <h2>✏️ Edit Result</h2>
+    <form method="POST">
+        <label>Subject:</label>
+        <input type="text" name="subject" value="{{ result[1] }}" required><br><br>
+        <label>Marks:</label>
+        <input type="number" name="marks" value="{{ result[2] }}" required><br><br>
+        <button type="submit">Update</button>
+    </form>
+    <br>
+    <a href="/view_results">🔙 Back to Results</a>
+</body>
+</html>

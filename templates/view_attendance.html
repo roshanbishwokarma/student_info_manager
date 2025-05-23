@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Records</title>
+</head>
+<body>
+
+    <form method="GET" action="/attendance_records">
+    <label for="filter_date">Filter by Date:</label>
+    <input type="date" id="filter_date" name="date" value="{{ request.args.get('date', '') }}">
+    <button type="submit">Filter</button>
+    <a href="/attendance_records">Clear Filter</a>
+
+</form>
+<form method="GET" action="/export_attendance" style="margin-top: 10px;">
+    {% if request.args.get('date') %}
+    <input type="hidden" name="date" value="{{ request.args.get('date') }}">
+    {% endif %}
+    <button type="submit">📥 Export to Excel</button>
+</form>
+
+
+
+    <h1>Attendance Records</h1>
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Class</th>
+            <th>Status</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td>{{ record[0] }}</td>
+            <td>{{ record[1] }}</td>
+            <td>{{ record[2] }}</td>
+            <td>{{ record[3] }}</td>
+            <td>{{ record[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

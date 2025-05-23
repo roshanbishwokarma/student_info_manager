@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title>
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+    <form method="POST">
+        <label>Date:</label>
+        <input type="date" name="date" value="{{ today }}" required><br><br>
+        
+        {% for student in students %}
+            <div>
+                <strong>{{ student[1] }} (Roll: {{ student[2] }})</strong><br>
+                <input type="hidden" name="student_id" value="{{ student[0] }}">
+                <label>
+                    <input type="radio" name="status_{{ student[0] }}" value="Present" required> Present
+                </label>
+                <label>
+                    <input type="radio" name="status_{{ student[0] }}" value="Absent" required> Absent
+                </label>
+            </div><br>
+        {% endfor %}
+
+        <button type="submit">Save Attendance</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+</html>

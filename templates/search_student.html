@@ -1,0 +1,27 @@
+<!-- templates/search_student.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Student</title>
+</head>
+<body>
+    <h1>Search Student</h1>
+    <form method="GET" action="/search_student">
+        <input type="text" name="query" placeholder="Enter student name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if students is defined %}
+        <h2>Search Results</h2>
+        {% if students %}
+            <ul>
+                {% for student in students %}
+                    <li>{{ student[1] }} - Roll No: {{ student[2] }}, Class: {{ student[3] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No students found matching your search.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+<h2>Add Student Result</h2>
+<form method="POST">
+    <label for="student_id">Student:</label>
+    <select name="student_id" required>
+        {% for student in students %}
+        <option value="{{ student[0] }}">{{ student[1] }} ({{ student[2] }})</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" required><br><br>
+
+    <label for="marks">Marks:</label>
+    <input type="number" name="marks" required><br><br>
+
+    <button type="submit">Add Result</button>
+</form>
